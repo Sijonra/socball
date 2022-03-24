@@ -1,0 +1,19 @@
+.section-navbar{
+    background: #E6E0AC;
+    height: 50vh;
+    padding: 12px 32px;
+}
+
+.nav-bar-links{list-style: none}
+
+.nav-bar__item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-bar__item:hover {
+    background: rgba(234, 241, 196, 0.5);
+}
+
+.nav-bar__item svg{margin-right: 12px;}
