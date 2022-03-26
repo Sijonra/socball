@@ -1,6 +1,6 @@
 import Logo from '../Logo'
 import HeaderNav from "./HeaderNav";
-import './Header.css'
+import './header.css'
 
 
 const Header = () =>{

@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-ul,li,h1,h2,h3,h4,h5,h6{
+ul,li,h1,h2,h3,h4,h5,h6, p{
     margin: 0;
     padding: 0;
 }
@@ -18,5 +18,11 @@ ul,li,h1,h2,h3,h4,h5,h6{
     display: grid;
     grid-template-columns: 2fr 5fr;
     grid-column-gap: 16px;
+}
+
+.avatar img, .avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
 }
 

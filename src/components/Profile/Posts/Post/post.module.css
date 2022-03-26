@@ -1,0 +1,16 @@
+.post{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    border: 1px solid silver;
+    margin-bottom: 32px;
+}
+.text{
+    color: white;
+}
+.likes{
+    color: white;
+}
+

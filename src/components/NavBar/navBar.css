@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .nav-bar__item:hover {

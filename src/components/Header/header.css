@@ -39,11 +39,6 @@
 
 .header-nav__item svg:hover path{fill: #FD6E35;}
 
-.section-header .avatar{
-    width: 32px;
-    height: 32px;
-}
-
 .section-header .avatar img{
     width: 100%;
     height: 100%;

@@ -1,19 +1,24 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import Posts from "./components/Posts/Posts";
+import Profile from "./components/Profile/Profile";
+import Messages from "./components/Messages/Messages";
+import {BrowserRouter, Route,Routes} from "react-router-dom";
 
 
 
 function App() {
     return(
-        <section className="main-section">
+        <BrowserRouter>
             <Header />
             <main className="section-main">
                 <NavBar />
-                <Posts />
+                <Routes>
+                    <Route path='profile' element={<Profile/>}/>
+                    <Route path='messages' element={<Messages/>}/>
+                </Routes>
             </main>
-        </section>
+        </BrowserRouter>
 
     )
 }
