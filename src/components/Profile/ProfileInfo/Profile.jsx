@@ -1,5 +1,5 @@
 import style from './profile.module.css'
-import Posts from "./Posts/Posts";
+import Posts from "../Posts/Posts";
 
 const Profile = props =>{
     return(
@@ -9,7 +9,6 @@ const Profile = props =>{
                 <input type="text" placeholder="Type your text"/>
                 <input type="submit" value="Submit"/>
             </form>
-
             <Posts />
         </section>
     )

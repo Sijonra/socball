@@ -11,6 +11,11 @@
     align-items: center;
     cursor: pointer;
     margin-bottom: 20px;
+    color: black;
+    text-decoration: none;
+}
+.active p{
+    color: orange;
 }
 
 .nav-bar__item:hover {

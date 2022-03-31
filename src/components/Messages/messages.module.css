@@ -1,0 +1,13 @@
+.messages{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.dialogs{
+    border-right: 1px solid silver;
+}
+
+.message{
+    padding-left: 10px  ;
+}
