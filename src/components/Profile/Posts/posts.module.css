@@ -1,5 +1,23 @@
 .posts{
-    background-color: #333333;
-    width: 500px;
+    background: #C4C4C4;
+    width: 80%;
     padding: 12px;
+    margin: 0 auto;
+}
+
+.inputForm{
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    width: 100%;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+}
+
+.submit{
+    height: 40px;
+    border: none;
 }

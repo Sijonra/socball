@@ -8,6 +8,16 @@
     border-right: 1px solid silver;
 }
 
+.dialog{
+    color: black;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
 .message{
     padding-left: 10px  ;
+    color: black;
+    margin-bottom: 10px;
+    font-size: 18px;
 }

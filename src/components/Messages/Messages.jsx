@@ -1,39 +1,21 @@
 import style from './messages.module.css'
 import {Link, NavLink} from "react-router-dom";
-
-const DialogItem = props => {
-
-    let linkPath = './' + props.userId;
-    console.log(linkPath);
-
-    return (
-        <div className={style.dialog}>
-            <Link to={linkPath}>{props.userName}</Link>
-        </div>
-    )
-}
-
-const Message = props => {
-    return (
-        <div className={style.message}>
-            <p>{props.message}</p>
-        </div>
-
-    )
-}
+import Message from "./Message/Message";
+import DialogItem from "./Dialogs/DialogItem/DialogItem";
 
 const Messages = props => {
+
     return (
         <section className={style.messages}>
             <div className={style.dialogs}>
-                <DialogItem userName="Antoha" userId={1} />
-                <DialogItem userName="Nikita" userId={2} />
-                <DialogItem userName="Egor" userId={3} />
+                {props.dialogs.map(element=>{
+                   return <DialogItem userName={element.name} userId={element.id} />
+                })}
             </div>
             <div className={style.messageWrapper}>
-                <Message message='privet' />
-                <Message message='hui' />
-                <Message message='poka' />
+                {props.messages.map(element=>{
+                    return <Message message={element.message}/>
+                })}
             </div>
         </section>
     )
