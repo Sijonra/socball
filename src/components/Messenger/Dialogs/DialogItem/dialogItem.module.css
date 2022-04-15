@@ -1,0 +1,10 @@
+.dialogItem{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.dialogItem div{
+    display: flex;
+    align-items: center;
+}

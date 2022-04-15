@@ -1,6 +1,7 @@
 import React from "react";
 import style from './posts.module.css'
 import Post from "./Post/Post";
+import {addNewPostTextActionCreator, addPostActionCreator} from "../../../redux/state";
 
 const Posts = props =>{
 
@@ -8,16 +9,17 @@ const Posts = props =>{
 
     let handlePostInputChange = () =>{
         let text = newPostElement.current.value;
-        props.addNewPostText(text);
+        //props.store.addNewPostText(text);
+        props.dispatch( addNewPostTextActionCreator('ADD-POST-TEXT', text) )
     }
 
     let handlePostSubmit = (event) =>{
         let text = newPostElement.current.value;
         event.preventDefault()
         if(text !== ''){
-            //props.addPost(text, 0)
-            props.addPost(props.newPostText, 0)
-            text = '';
+            //props.store.addPost(props.state.profilePage.newPostText, 0)
+            props.dispatch(addPostActionCreator('ADD-POST', props.state.profilePage.newPostText, 0))
+            props.state.profilePage.newPostText = '';
         }
     }
 
@@ -29,11 +31,11 @@ const Posts = props =>{
                     ref={newPostElement}
                     onChange={handlePostInputChange}
                     className={style.input}
-                    value={props.newPostText}
+                    value={props.state.profilePage.newPostText}
                 />
                 <input type="submit" value="Submit" className={style.submit} />
             </form>
-            {props.posts.map(post=>{
+            {props.state.profilePage.posts.map(post=>{
                return <Post text={post.text} likesCount={post.likesCount} />
             })}
         </section>

@@ -7,10 +7,8 @@ const Profile = props =>{
         <section className={style.profile}>
             <ProfileInfo/>
             <Posts
-                posts={props.posts}
-                addPost={props.addPost}
-                newPostText={props.newPostText}
-                addNewPostText={props.addNewPostText}
+                state={props.state}
+                dispatch={props.dispatch}
             />
         </section>
     )
