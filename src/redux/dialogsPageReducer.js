@@ -5,8 +5,7 @@ let dialogsReducer = (state, action) =>{
 
     if(action.type == ADD_MESSAGE_TEXT){
         state.newMessageText = action.text;
-    }
-    else if(action.type == ADD_MESSAGE){
+    } else if(action.type == ADD_MESSAGE){
         state.messages.push({text: action.text});
     }
 

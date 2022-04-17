@@ -10,8 +10,6 @@ let store = {
             ],
             messages: [
                 {text: "Привет, друг"},
-                {text: "Привет, друг"},
-                {text: "Привет, друг"},
             ],
             newMessageText: '',
         },
@@ -24,7 +22,7 @@ let store = {
         },
     },
 
-    subscribe(callback) {this._renderEntireTree = callback;},
+    subscribe(observer) {this._renderEntireTree = observer;},
 
     _renderEntireTree() {},
 
