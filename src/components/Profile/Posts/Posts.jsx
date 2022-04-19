@@ -1,35 +1,28 @@
 import React from "react";
 import style from './posts.module.css'
 import Post from "./Post/Post";
-import {addNewPostTextActionCreator, addPostActionCreator} from "../../../redux/state";
 
-const Posts = props =>{
+const Posts = props => {
 
     let newPostElement = React.createRef();
 
-    let handlePostInputChange = () =>{
+    const addInputText = () =>{
         let text = newPostElement.current.value;
-        //props.store.addNewPostText(text);
-        props.dispatch( addNewPostTextActionCreator('ADD-POST-TEXT', text) )
+        props.handlePostInputChange(text);
     }
 
-    let handlePostSubmit = (event) =>{
-        let text = newPostElement.current.value;
-        event.preventDefault()
-        if(text !== ''){
-            //props.store.addPost(props.state.profilePage.newPostText, 0)
-            props.dispatch(addPostActionCreator('ADD-POST', props.state.profilePage.newPostText, 0))
-            props.state.profilePage.newPostText = '';
-        }
+    const addPost = (event) =>{
+        event.preventDefault();
+        props.handlePostSubmit();
     }
 
     return(
         <section className={style.posts}>
-            <form onSubmit={handlePostSubmit} className={style.inputForm} >
+            <form onSubmit={addPost} className={style.inputForm} >
                 <textarea
                     type="text"
                     ref={newPostElement}
-                    onChange={handlePostInputChange}
+                    onChange={addInputText}
                     className={style.input}
                     value={props.state.profilePage.newPostText}
                 />

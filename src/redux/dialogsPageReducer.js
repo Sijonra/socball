@@ -1,4 +1,15 @@
-let dialogsReducer = (state, action) =>{
+let initialState = {
+    dialogs: [
+        {name: "Toha", id: 0},
+        {name: "Nekit", id: 1},
+    ],
+    messages: [
+        {text: "Привет, друг"},
+    ],
+    newMessageText: '',
+}
+
+let dialogsReducer = (state = initialState, action) =>{
 
     const ADD_MESSAGE_TEXT = 'ADD-MESSAGE-TEXT'
     const ADD_MESSAGE = 'ADD-MESSAGE'

@@ -1,6 +1,6 @@
 import style from './messanger.module.css';
 import Dialogs from './Dialogs/Dialogs'
-import Dialog from "./Messages/Dialog";
+import DialogContainer from "./Messages/DialogContainer";
 
 const Messenger = props => {
 
@@ -9,10 +9,7 @@ const Messenger = props => {
             <Dialogs
                 state={props.state}
             />
-            <Dialog
-                state={props.state}
-                dispatch={props.dispatch}
-            />
+            <DialogContainer store={props.store} />
         </section>
     )
 }

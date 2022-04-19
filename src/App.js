@@ -18,11 +18,13 @@ function App(props) {
                         <Profile
                             state={props.store.getState()}
                             dispatch={props.store.dispatch.bind(props.store)}
+                            store={props.store}
                         />}/>
                     <Route path='/messages/*' element={
                         <Messenger
                             state={props.store.getState()}
                             dispatch={props.store.dispatch.bind(props.store)}
+                            store={props.store}
                         />
                     }/>
                     <Route path='/map' element={<Map/>}/>

@@ -1,4 +1,12 @@
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {text: "gamno", likesCount: 5},
+        {text: "jopa", likesCount: 3},
+    ],
+    newPostText: '',
+}
+
+const profileReducer = (state = initialState, action) => {
 
     const ADD_POST_TEXT = 'ADD-POST-TEXT'
     const ADD_POST = 'ADD-POST'
