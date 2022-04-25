@@ -1,29 +1,52 @@
 import React from "react";
 import {addNewPostTextActionCreator, addPostActionCreator} from '../../../redux/redux-store'
 import Posts from "./Posts";
+import {connect} from "react-redux";
+import {store} from "../../../redux/redux-store";
 
-const PostsContainer = props => {
+//import message from "../../Messenger/Messages/Message/Message";
 
-    let state = props.store.getState();
+// const PostsContainer = props => {
+//
+//     let state = props.store.getState();
+//
+//     let handlePostInputChange = (text) =>{
+//         props.store.dispatch(addNewPostTextActionCreator(text))
+//     }
+//
+//     let handlePostSubmit = () =>{
+//         if(state.profilePage.newPostText !== ''){
+//             props.store.dispatch(addPostActionCreator(state.profilePage.newPostText, 0))
+//             state.profilePage.newPostText = '';
+//         }
+//     }
+//
+//     return(
+//         <Posts
+//             state={state}
+//             handlePostInputChange={handlePostInputChange}
+//             handlePostSubmit={handlePostSubmit}
+//         />
+//     )
+// }
 
-    let handlePostInputChange = (text) =>{
-        props.store.dispatch(addNewPostTextActionCreator('ADD-POST-TEXT', text) )
+let mapStateToProps = (state) =>{
+    return{
+        state: state,
     }
-
-    let handlePostSubmit = () =>{
-        if(state.profilePage.newPostText !== ''){
-            props.store.dispatch(addPostActionCreator('ADD-POST', state.profilePage.newPostText, 0))
-            state.profilePage.newPostText = '';
-        }
-    }
-
-    return(
-        <Posts
-            state={state}
-            handlePostInputChange={handlePostInputChange}
-            handlePostSubmit={handlePostSubmit}
-        />
-    )
 }
+
+let mapDispatchToProps = (dispatch, ownProps) =>{
+    return{
+        handlePostInputChange: (text) => {
+            dispatch(addNewPostTextActionCreator(text));
+        },
+        handlePostSubmit: () =>{
+            dispatch(addPostActionCreator(ownProps.store.getState().profilePage.newPostText, 0))
+        },
+    }
+}
+
+const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
 
 export default PostsContainer;

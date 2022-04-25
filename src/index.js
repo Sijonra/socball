@@ -5,18 +5,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
-let renderEntireTree = () =>{
-    ReactDOM.render(
-        <BrowserRouter>
-            <React.StrictMode>
+ReactDOM.render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <Provider store={store}>
                 <App store={store}/>
-            </React.StrictMode>
-        </BrowserRouter>,
-        document.getElementById('root')
+            </Provider>
+        </React.StrictMode>
+    </BrowserRouter>,
+    document.getElementById('root')
     );
-}
-store.subscribe(renderEntireTree);
-renderEntireTree();
 
 

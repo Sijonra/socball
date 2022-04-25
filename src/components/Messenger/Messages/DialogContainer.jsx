@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialog from "./Dialog";
-import {addNewMessageActionCreator, addNewMessageTextActionCreator} from "../../../redux/state";
+import {addNewMessageActionCreator, addNewMessageTextActionCreator} from "../../../redux/redux-store";
 
 const DialogContainer = props =>{
 
