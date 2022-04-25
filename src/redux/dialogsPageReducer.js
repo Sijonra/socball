@@ -14,13 +14,32 @@ let dialogsReducer = (state = initialState, action) =>{
     const ADD_MESSAGE_TEXT = 'ADD-MESSAGE-TEXT'
     const ADD_MESSAGE = 'ADD-MESSAGE'
 
-    if(action.type == ADD_MESSAGE_TEXT){
-        state.newMessageText = action.text;
-    } else if(action.type == ADD_MESSAGE){
-        state.messages.push({text: action.text});
-    }
+    // if(action.type == ADD_MESSAGE_TEXT){
+    //     let tmpState = {...state}
+    //     tmpState.newMessageText = {...state.newMessageText}
+    //     tmpState.newMessageText = action.text;
+    // } else if(action.type == ADD_MESSAGE){
+    //     state.messages.push({text: action.text});
+    // }
 
-    return state;
+    switch(action.type){
+        case ADD_MESSAGE_TEXT: {
+            let tmpState = {...state}
+            tmpState.newMessageText = {...state.newMessageText}
+            tmpState.newMessageText = action.text
+            return tmpState
+        }
+        case ADD_MESSAGE: {
+            let tmpState = {...state}
+            tmpState.messages = [...state.messages]
+            let message = {
+                text: action.text,
+            }
+            tmpState.messages.push(message)
+            return tmpState
+        }
+        default: return state
+    }
 
 }
 

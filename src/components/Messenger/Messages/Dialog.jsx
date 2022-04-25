@@ -6,7 +6,6 @@ const Dialog = props =>{
 
     let message = React.createRef();
 
-
     const addInputText = () =>{
         let currentMessage = message.current.value;
         props.handleInputChange(currentMessage);
