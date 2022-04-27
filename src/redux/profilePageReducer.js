@@ -1,7 +1,7 @@
 let initialState = {
     posts: [
-        {text: "gamno", likesCount: 5},
-        {text: "jopa", likesCount: 3},
+        {id: 0, text: "gamno", likesCount: 5},
+        {id: 1, text: "jopa", likesCount: 3},
     ],
     newPostText: '',
 }
@@ -10,19 +10,17 @@ const profileReducer = (state = initialState, action) => {
 
     const ADD_POST_TEXT = 'ADD-POST-TEXT'
     const ADD_POST = 'ADD-POST'
-
+    let tmpState = {...state};
     switch (action.type) {
         case ADD_POST_TEXT: {
-            let tmpState = {...state};
             tmpState.newPostText = {...state.newPostText};
             tmpState.newPostText = action.text;
             return tmpState;
         }
         case ADD_POST: {
-            let tmpState = {...state};
             tmpState.posts = [...state.posts];
             let post = {
-                text: action.text,
+                text: state.newPostText,
                 likesCount: action.likes,
             }
             tmpState.posts.push(post);

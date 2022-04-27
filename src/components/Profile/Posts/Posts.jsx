@@ -18,7 +18,7 @@ const Posts = props => {
 
     return(
         <section className={style.posts}>
-            <form onSubmit={addPost} className={style.inputForm} >
+            <form onSubmit={addPost} className={style.inputForm}>
                 <textarea
                     type="text"
                     ref={newPostElement}
@@ -29,7 +29,7 @@ const Posts = props => {
                 <input type="submit" value="Submit" className={style.submit} />
             </form>
             {props.state.profilePage.posts.map(post=>{
-               return <Post text={post.text} likesCount={post.likesCount} />
+               return <Post text={post.text} likesCount={post.likesCount} key={post.id}/>
             })}
         </section>
     )

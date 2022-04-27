@@ -6,6 +6,7 @@ import Messenger from "./components/Messenger/Messenger";
 import {Route, Routes} from "react-router-dom";
 import Map from "./components/Map/Map";
 import Friends from "./components/Friends/Friends";
+import Users from "./components/Users/Users";
 
 function App(props) {
     return(
@@ -15,17 +16,13 @@ function App(props) {
                 <NavBar />
                 <Routes>
                     <Route path='/profile/*' element={
-                        <Profile
-                            state={props.store.getState()}
-                            dispatch={props.store.dispatch.bind(props.store)}
-                            store={props.store}
-                        />}/>
+                        <Profile/>
+                    }/>
                     <Route path='/messages/*' element={
-                        <Messenger
-                            state={props.store.getState()}
-                            dispatch={props.store.dispatch.bind(props.store)}
-                            store={props.store}
-                        />
+                        <Messenger/>
+                    }/>
+                    <Route path='/users' element={
+                        <Users/>
                     }/>
                     <Route path='/map' element={<Map/>}/>
                     <Route path='/friends' element={<Friends/>}/>

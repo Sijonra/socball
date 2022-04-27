@@ -8,7 +8,7 @@ const Dialogs = props =>{
         <div className={style.dialogs}>
             {props.state.dialogsPage.dialogs.map( dialog => {
                 return(
-                    <DialogItem name={dialog.name} id={dialog.id} />
+                    <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />
                 )
             })}
         </div>

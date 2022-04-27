@@ -18,7 +18,7 @@ const Dialog = props =>{
     return(
         <div className={style.dialog}>
             {props.state.dialogsPage.messages.map( message =>{
-                return <Message message={message.text} />
+                return <Message message={message.text} key={message.id} />
             } )}
 
             <div className={style.inputForm}>

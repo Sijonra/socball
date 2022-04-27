@@ -42,8 +42,7 @@ let mapDispatchToProps = (dispatch, ownProps) =>{
                 dispatch(addNewMessageTextActionCreator(text))
             },
             handleMessageSubmit: () => {
-                dispatch(addNewMessageActionCreator(ownProps.store.getState().dialogsPage.newMessageText))
-                ownProps.store.getState().dialogsPage.newMessageText = '';
+                dispatch(addNewMessageActionCreator())
             }
         }
     )
