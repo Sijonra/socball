@@ -5,7 +5,7 @@ const HeaderNav = () =>{
     return(
         <ul className="header-nav">
             <li className="header-nav__item">
-                <Avatar />
+                <Avatar avatarLink='https://cdnimg.rg.ru/img/content/161/31/13/kinopoisk.ru-Shrek-13985_t_650x433.jpg'/>
             </li>
             <li className="header-nav__item">
                 <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -20,9 +20,3 @@ ul,li,h1,h2,h3,h4,h5,h6, p{
     grid-column-gap: 16px;
 }
 
-.avatar img, .avatar{
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-}
-

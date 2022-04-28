@@ -9,7 +9,7 @@ let mapStateToProps = (state) =>{
     }
 }
 
-let mapDispatchToProps = (dispatch, state) =>{
+let mapDispatchToProps = (dispatch) =>{
     return{
         handlePostInputChange: (text) => {
             dispatch(addNewPostTextActionCreator(text));

@@ -1,30 +1,38 @@
+import users from "../components/Users/Users";
+
 let initialState = {
-    users: [
-        {profileId: 0, profileName: "Joel Embid", profileIsFolowed: true, profileStatus: "BEN SIMONS SUCKS"},
-        {profileId: 0, profileName: "Nikola Jokich", profileIsFolowed: true, profileStatus: "BEN SIMONS SUCKS"},
-    ],
+    users: [],
 }
 
 const usersPageReducer = (state = initialState, action) => {
 
-    const FOLLOW_USER = 'FOLLOW-USER'
-    const UNFOLLOW_USER = 'UNFOLLOW-USER'
+    // const FOLLOW_USER = 'FOLLOW-USER'
+    // const UNFOLLOW_USER = 'UNFOLLOW-USER'
+    const TOGGLE_FOLLOW_BUTTON = 'TOGGLE-FOLLOW-BUTTON';
+    const SET_USERS = 'SET-USERS';
 
     let tmpState = {...state}
     tmpState.users = [...state.users]
 
     switch (action.type){
-        case FOLLOW_USER:{
+        case TOGGLE_FOLLOW_BUTTON:{
+            console.log(action.userId)
+            state.users[action.userId].isFolowed ? tmpState.users[action.userId].isFolowed = false : tmpState.users[action.userId].isFolowed = true;
             return tmpState;
         }
-        case UNFOLLOW_USER:{
-            return tmpState;
+        case SET_USERS:{
+            tmpState.users = action.users;
+            return tmpState
         }
         default:{
-            return tmpState;
+            return state;
         }
     }
 
+
 }
+
+export let toggleFollowAC = (type, userId) => ({type: type, userId: userId});
+export let setUsersAC = (type, users) => ({type: type, users: users})
 
 export default usersPageReducer;

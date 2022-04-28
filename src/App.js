@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import Map from "./components/Map/Map";
 import Friends from "./components/Friends/Friends";
 import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
     return(
@@ -22,7 +23,7 @@ function App(props) {
                         <Messenger/>
                     }/>
                     <Route path='/users' element={
-                        <Users/>
+                        <UsersContainer/>
                     }/>
                     <Route path='/map' element={<Map/>}/>
                     <Route path='/friends' element={<Friends/>}/>
