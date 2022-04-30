@@ -2,6 +2,9 @@ import users from "../components/Users/Users";
 
 let initialState = {
     users: [],
+    usersOnPage: 5,
+    totalUsersCount: 20,
+    currentUser: 1,
 }
 
 const usersPageReducer = (state = initialState, action) => {
@@ -16,8 +19,11 @@ const usersPageReducer = (state = initialState, action) => {
 
     switch (action.type){
         case TOGGLE_FOLLOW_BUTTON:{
-            console.log(action.userId)
-            state.users[action.userId].isFolowed ? tmpState.users[action.userId].isFolowed = false : tmpState.users[action.userId].isFolowed = true;
+            tmpState.users.map( user =>{
+                if(user.id === action.userId){
+                    user.followed ? user.followed = false : user.followed = true;
+                }
+            })
             return tmpState;
         }
         case SET_USERS:{
