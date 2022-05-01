@@ -1,4 +1,15 @@
 .activePage{
     margin-right: 10px;
     font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+}
+.activePage1{
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.pagination{
+    max-width: 500px;
+    overflow: hidden;
 }

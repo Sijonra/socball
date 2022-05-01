@@ -4,15 +4,19 @@ let initialState = {
     users: [],
     usersOnPage: 5,
     totalUsersCount: 20,
-    currentUser: 1,
+    currentPage: 1,
 }
+
+const TOGGLE_FOLLOW_BUTTON = 'TOGGLE-FOLLOW-BUTTON';
+const SET_USERS = 'SET-USERS';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const usersPageReducer = (state = initialState, action) => {
 
     // const FOLLOW_USER = 'FOLLOW-USER'
     // const UNFOLLOW_USER = 'UNFOLLOW-USER'
-    const TOGGLE_FOLLOW_BUTTON = 'TOGGLE-FOLLOW-BUTTON';
-    const SET_USERS = 'SET-USERS';
+
 
     let tmpState = {...state}
     tmpState.users = [...state.users]
@@ -30,6 +34,14 @@ const usersPageReducer = (state = initialState, action) => {
             tmpState.users = action.users;
             return tmpState
         }
+        case SET_TOTAL_USERS_COUNT:{
+            tmpState.totalUsersCount = action.count;
+            return tmpState;
+        }
+        case SET_CURRENT_PAGE:{
+            tmpState.currentPage = action.currentPage;
+            return tmpState;
+        }
         default:{
             return state;
         }
@@ -38,7 +50,9 @@ const usersPageReducer = (state = initialState, action) => {
 
 }
 
-export let toggleFollowAC = (type, userId) => ({type: type, userId: userId});
-export let setUsersAC = (type, users) => ({type: type, users: users})
+export let toggleFollowAC = (userId) => ({type: TOGGLE_FOLLOW_BUTTON, userId: userId});
+export let setUsersAC = (users) => ({type: SET_USERS, users: users});
+export let setTotalUsersCountAC = (count) => ({type: SET_TOTAL_USERS_COUNT, count: count});
+export let setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage});
 
 export default usersPageReducer;
