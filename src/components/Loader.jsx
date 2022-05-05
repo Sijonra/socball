@@ -5,7 +5,8 @@ const Loader = props =>{
     return(
         <>
             <div className={style.loader}>
-                <img src={loaderImg} alt=""/>
+                <div>Loading...</div>
+                <img src={loaderImg} />
             </div>
         </>
     )

@@ -6,8 +6,8 @@ import Messenger from "./components/Messenger/Messenger";
 import {Route, Routes} from "react-router-dom";
 import Map from "./components/Map/Map";
 import Friends from "./components/Friends/Friends";
-import Users from "./components/Users/Users";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 function App(props) {
     return(
@@ -16,8 +16,8 @@ function App(props) {
             <main className="section-main">
                 <NavBar />
                 <Routes>
-                    <Route path='/profile/*' element={
-                        <Profile/>
+                    <Route path='/profile/:userId' element={
+                        <ProfileContainer />
                     }/>
                     <Route path='/messages/*' element={
                         <Messenger/>

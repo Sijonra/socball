@@ -3,6 +3,7 @@ import Avatar from "../Avatar";
 import style from './users.module.css'
 import avatarImg from '../../assets/png-transparent-avatar-computer-icons-user-avatar-template-rectangle-logo.png'
 import Loader from "../Loader";
+import {NavLink} from "react-router-dom";
 
 let Users = props =>{
     let pages = [];
@@ -25,7 +26,9 @@ let Users = props =>{
             {props.users.map(user => {
                 return (
                     <div key={user.id}>
-                        <Avatar avatarLink={user.photos.small ? user.photos.small : avatarImg}/>
+                        <NavLink to={'/profile/' + user.id}>
+                            <Avatar avatarLink={user.photos.small ? user.photos.small : avatarImg}/>
+                        </NavLink>
                         <p>{user.name + " #" + user.id}</p>
                         <p>{user.status}</p>
                         <button onClick={() => {

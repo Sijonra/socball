@@ -5,7 +5,7 @@ import PostsContainer from './Posts/PostsContainer'
 const Profile = props =>{
     return(
         <section className={style.profile}>
-            <ProfileInfo/>
+            <ProfileInfo userProfile={props.userProfile}/>
             <PostsContainer />
         </section>
     )

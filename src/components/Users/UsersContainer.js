@@ -1,10 +1,11 @@
 import React     from "react";
 import {connect} from "react-redux";
 import {
-    setCurrentPageAC, setPageToLoadAC,
+    setCurrentPageAC,
     setTotalUsersCountAC,
     setUsersAC,
-    toggleFollowAC
+    toggleFollowAC,
+    toggleLoadingAnimationAC
 } from "../../redux/usersPageReducer";
 import * as axios from "axios";
 import Users from "./Users";
@@ -24,31 +25,28 @@ class UsersContainer extends React.Component {
 
     setCurrentPage = (currentPage) => {
         this.props.setCurrentPage(currentPage);
-        this.props.setPageToLoad();
+        this.props.toggleLoadingAnimation();
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.usersOnPage}`).then(response => {
-            this.props.setPageToLoad();
+            this.props.toggleLoadingAnimation();
             this.props.setUsers(response.data.items);
         })
     }
 
     render() {
-
         return (
             <Users
-                currentPage={this.props.currentPage}
-                totalUsersCount={this.props.totalUsersCount}
-                usersOnPage={this.props.usersOnPage}
+                // currentPage={this.props.currentPage}
+                // totalUsersCount={this.props.totalUsersCount}
+                // usersOnPage={this.props.usersOnPage}
+                // toggleFollowButton={this.toggleFollowButton}
+                // pageIsLoading={this.props.pageIsLoading}
+                {...this.props}
                 users={this.props.users}
                 setCurrentPage={this.setCurrentPage}
-                toggleFollowButton={this.toggleFollowButton}
-                setPageToLoad={this.props.setPageToLoad}
-                pageIsLoading={this.props.pageIsLoading}
             />
         )
     }
-
 }
-
 
 let mapStateToProps = (state) =>{
     return(
@@ -76,8 +74,8 @@ let mapDispatchToProps = (dispatch) => {
         setCurrentPage: (currentPage) =>{
             dispatch(setCurrentPageAC(currentPage));
         },
-        setPageToLoad: () =>{
-            dispatch(setPageToLoadAC());
+        toggleLoadingAnimation: () =>{
+            dispatch(toggleLoadingAnimationAC());
         },
     }
 }

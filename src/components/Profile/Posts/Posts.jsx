@@ -24,11 +24,11 @@ const Posts = props => {
                     ref={newPostElement}
                     onChange={addInputText}
                     className={style.input}
-                    value={props.state.profilePage.newPostText}
+                    value={props.profilePage.newPostText}
                 />
                 <input type="submit" value="Submit" className={style.submit} />
             </form>
-            {props.state.profilePage.posts.map(post=>{
+            {props.profilePage.posts.map(post=>{
                return <Post text={post.text} likesCount={post.likesCount} key={post.id}/>
             })}
         </section>

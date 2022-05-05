@@ -12,7 +12,7 @@ const TOGGLE_FOLLOW_BUTTON = 'TOGGLE-FOLLOW-BUTTON';
 const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_PAGE_TO_LOAD = 'SET_PAGE_TO_LOAD';
+const TOGGLE_LOADING_ANIMATION = 'TOGGLE_LOADING_ANIMATION';
 
 const usersPageReducer = (state = initialState, action) => {
 
@@ -40,7 +40,7 @@ const usersPageReducer = (state = initialState, action) => {
             tmpState.currentPage = action.currentPage;
             return tmpState;
         }
-        case SET_PAGE_TO_LOAD:{
+        case TOGGLE_LOADING_ANIMATION:{
             tmpState.pageIsLoading ? tmpState.pageIsLoading = false : tmpState.pageIsLoading = true;
             return tmpState;
         }
@@ -56,6 +56,6 @@ export let toggleFollowAC = (userId) => ({type: TOGGLE_FOLLOW_BUTTON, userId: us
 export let setUsersAC = (users) => ({type: SET_USERS, users: users});
 export let setTotalUsersCountAC = (count) => ({type: SET_TOTAL_USERS_COUNT, count: count});
 export let setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage: currentPage});
-export let setPageToLoadAC = () => ({type: SET_PAGE_TO_LOAD});
+export let toggleLoadingAnimationAC = () => ({type: TOGGLE_LOADING_ANIMATION});
 
 export default usersPageReducer;
