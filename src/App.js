@@ -8,11 +8,12 @@ import Map from "./components/Map/Map";
 import Friends from "./components/Friends/Friends";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 function App(props) {
     return(
         <>
-            <Header />
+            <HeaderContainer />
             <main className="section-main">
                 <NavBar />
                 <Routes>

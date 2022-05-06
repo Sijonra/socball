@@ -5,7 +5,6 @@ import axios from "axios";
 import {setUserProfileAC} from "../../redux/profilePageReducer";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 
-
 class ProfileContainer extends React.Component{
 
     componentDidMount() {

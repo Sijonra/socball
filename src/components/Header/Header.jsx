@@ -3,12 +3,12 @@ import HeaderNav from "./HeaderNav";
 import './header.css'
 
 
-const Header = () =>{
+const Header = (props) =>{
     return(
         <header className="section-header">
             <div className="section-inner">
                 <Logo />
-                <HeaderNav />
+                <HeaderNav isLoggedIn={props.isLoggedIn} userLogin={props.userLogin}  />
             </div>
 
         </header>
