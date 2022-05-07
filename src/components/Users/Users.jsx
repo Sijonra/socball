@@ -4,6 +4,7 @@ import style from './users.module.css'
 import avatarImg from '../../assets/png-transparent-avatar-computer-icons-user-avatar-template-rectangle-logo.png'
 import Loader from "../Loader";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 let Users = props =>{
     let pages = [];
@@ -31,9 +32,20 @@ let Users = props =>{
                         </NavLink>
                         <p>{user.name + " #" + user.id}</p>
                         <p>{user.status}</p>
-                        <button onClick={() => {
-                            props.toggleFollowButton(user.id)
-                        }}> {user.followed ? 'UnFollow' : 'Follow'} </button>
+                        {user.followed ?
+                            <button onClick={()=>{
+                                axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
+                                    console.log(response.data);
+                                    props.handleToggleFollowButton(user.id);
+                                })
+                            }}>unfollow</button>
+                            :
+                            <button onClick={()=>{
+                                axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {}, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
+                                    console.log(response.data);
+                                    props.handleToggleFollowButton(user.id);
+                                })
+                            }}>follow</button>}
                     </div>
                 )
             })}

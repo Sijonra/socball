@@ -13,7 +13,7 @@ import Users from "./Users";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
             this.props.setUsers(response.data.items);
             this.props.setTotalUsersCount(response.data.totalCount);
         })
@@ -26,7 +26,7 @@ class UsersContainer extends React.Component {
     setCurrentPage = (currentPage) => {
         this.props.setCurrentPage(currentPage);
         this.props.toggleLoadingAnimation();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.usersOnPage}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
             this.props.toggleLoadingAnimation();
             this.props.setUsers(response.data.items);
         })
