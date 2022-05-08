@@ -9,14 +9,20 @@ import {
 } from "../../redux/usersPageReducer";
 import * as axios from "axios";
 import Users from "./Users";
+import {usersApi} from "../../api/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
-        })
+        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
+        //     this.props.setUsers(response.data.items);
+        //     this.props.setTotalUsersCount(response.data.totalCount);
+        // })
+        usersApi.getUsers(this.props.currentPage, this.props.usersOnPage).then(data =>{
+            console.log(data);
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
+        });
     }
 
     toggleFollowButton = (id) => {
@@ -26,10 +32,15 @@ class UsersContainer extends React.Component {
     setCurrentPage = (currentPage) => {
         this.props.setCurrentPage(currentPage);
         this.props.toggleLoadingAnimation();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
+        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.usersOnPage}`, {withCredentials: true}).then(response => {
+        //     this.props.toggleLoadingAnimation();
+        //     this.props.setUsers(response.data.items);
+        // })
+        usersApi.getUsers(this.props.currentPage, this.props.usersOnPage).then(data =>{
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
             this.props.toggleLoadingAnimation();
-            this.props.setUsers(response.data.items);
-        })
+        });
     }
 
     render() {
