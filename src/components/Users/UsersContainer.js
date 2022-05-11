@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
     setCurrentPageAC,
     setTotalUsersCountAC,
-    setUsersAC,
+    setUsersAC, toggleDisablingButton,
     toggleFollowAC,
     toggleLoadingAnimationAC
 } from "../../redux/usersPageReducer";
@@ -59,6 +59,7 @@ let mapStateToProps = (state) =>{
             usersOnPage: state.usersPage.usersOnPage,
             currentPage: state.usersPage.currentPage,
             pageIsLoading: state.usersPage.pageIsLoading,
+            isButtonDisabled: state.usersPage.isButtonDisabled,
         }
     )
 }
@@ -79,6 +80,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         toggleLoadingAnimation: () =>{
             dispatch(toggleLoadingAnimationAC());
+        },
+        toggleDisablingButton: () =>{
+            dispatch(toggleDisablingButton());
         },
     }
 }

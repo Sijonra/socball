@@ -6,6 +6,7 @@ let initialState = {
     totalUsersCount: 20,
     currentPage: 1,
     pageIsLoading: false,
+    isButtonDisabled: false,
 }
 
 const TOGGLE_FOLLOW_BUTTON = 'TOGGLE-FOLLOW-BUTTON';
@@ -13,6 +14,7 @@ const SET_USERS = 'SET-USERS';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_LOADING_ANIMATION = 'TOGGLE_LOADING_ANIMATION';
+const TOGGLE_DISABLING_BUTTON = 'TOGGLE_DISABLING_BUTTON';
 
 const usersPageReducer = (state = initialState, action) => {
 
@@ -44,14 +46,17 @@ const usersPageReducer = (state = initialState, action) => {
             tmpState.pageIsLoading ? tmpState.pageIsLoading = false : tmpState.pageIsLoading = true;
             return tmpState;
         }
+        case TOGGLE_DISABLING_BUTTON:{
+            state.isButtonDisabled ? tmpState.isButtonDisabled = false : tmpState.isButtonDisabled = true;
+            return tmpState;
+        }
         default:{
             return state;
         }
     }
-
-
 }
 
+export let toggleDisablingButton = () => ({type: TOGGLE_DISABLING_BUTTON,});
 export let toggleFollowAC = (userId) => ({type: TOGGLE_FOLLOW_BUTTON, userId: userId});
 export let setUsersAC = (users) => ({type: SET_USERS, users: users});
 export let setTotalUsersCountAC = (count) => ({type: SET_TOTAL_USERS_COUNT, count: count});

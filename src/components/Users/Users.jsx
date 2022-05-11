@@ -34,20 +34,22 @@ let Users = props =>{
                         <p>{user.name + " #" + user.id}</p>
                         <p>{user.status}</p>
                         {user.followed ?
-                            <button onClick={()=>{
-                                // axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
-                                //     console.log(response.data);
-                                //     props.handleToggleFollowButton(user.id);
-                                // })
-                                usersApi.unfollowUser(user.id, props.handleToggleFollowButton);
+                            <button disabled={props.isButtonDisabled} onClick={()=>{
+                                props.toggleDisablingButton();
+                                axios.delete('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
+                                    props.handleToggleFollowButton(user.id);
+                                    props.toggleDisablingButton();
+                                })
+                                //usersApi.unfollowUser(user.id, props.handleToggleFollowButton);
                             }}>unfollow</button>
                             :
-                            <button onClick={()=>{
-                                // axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {}, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
-                                //     console.log(response.data);
-                                //     props.handleToggleFollowButton(user.id);
-                                // })
-                                usersApi.followUser(user.id, props.handleToggleFollowButton);
+                            <button disabled={props.isButtonDisabled} onClick={()=>{
+                                props.toggleDisablingButton();
+                                axios.post('https://social-network.samuraijs.com/api/1.0/follow/' + user.id, {}, {withCredentials: true, headers:{"API-KEY": "7a72805e-3ef8-4b01-8441-810a01e74cd2"}}).then(response =>{
+                                    props.handleToggleFollowButton(user.id);
+                                    props.toggleDisablingButton();
+                                })
+                                //usersApi.followUser(user.id, props.handleToggleFollowButton);
                             }}>follow</button>}
                     </div>
                 )
